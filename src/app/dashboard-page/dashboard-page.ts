@@ -22,7 +22,7 @@ import { MyCustomPipe } from '../pipes/my-custom-pipe';
   selector: 'app-dashboard-page',
   imports: [
     CommonModule,
-    FilterPipe,
+    //FilterPipe,
     MyCustomPipe,
     FormsModule,
     MatInputModule,
