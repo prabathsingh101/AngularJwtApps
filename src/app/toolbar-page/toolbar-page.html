@@ -2,6 +2,9 @@
   <span class="logo">My Dashboard</span>
   <span class="spacer"></span>
   <button mat-button routerLink="/dashboard">Dashboard</button>
-  <button mat-button *ngIf="!isLoggedIn()" routerLink="/login">Login</button>
-  <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  @if (isLoggedIn()) {
+  <button mat-button routerLink="/register">Register</button>
+  }
+  @if(!isLoggedIn()){<button mat-button routerLink="/login">Login</button>}
+  @if(isLoggedIn()){<button mat-button (click)="logout()">Logout</button>}
 </mat-toolbar>

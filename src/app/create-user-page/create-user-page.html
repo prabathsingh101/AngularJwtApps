@@ -1,0 +1,19 @@
+<div class="user-container">
+  <h1>Create User</h1>
+  <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Enter user name" formControlName="username" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter password" formControlName="password" required />
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Create User</button>&nbsp;
+    <button mat-raised-button type="submit">View User</button>
+
+  </form>
+
+</div>
