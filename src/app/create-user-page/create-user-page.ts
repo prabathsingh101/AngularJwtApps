@@ -73,7 +73,6 @@ export class CreateUserPage implements OnInit {
         });
       },
       complete: () => {
-        // Unsubscribe after completion
         sub.unsubscribe();
       },
     });
