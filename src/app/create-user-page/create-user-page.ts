@@ -12,6 +12,8 @@ import { Users } from '../core/user.model';
 import { UserService } from '../core/user-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-user-page',
@@ -21,13 +23,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    CommonModule,
+    MatIconModule,
   ],
   templateUrl: './create-user-page.html',
   styleUrl: './create-user-page.scss',
 })
 export class CreateUserPage implements OnInit {
-  username: string = '';
-  password: string = '';
+  clearUser = '';
+  clearPassword = '';
 
   register!: Users;
 
@@ -47,11 +51,10 @@ export class CreateUserPage implements OnInit {
       console.error('Form is invalid');
       return;
     }
-    this.username = this.createUserForm.value.username;
-    this.password = this.createUserForm.value.password;
+
     this.register = {
-      username: this.username,
-      password: this.password,
+      username: this.createUserForm.value.username,
+      password: this.createUserForm.value.password,
     };
 
     const sub = this.svc.Register(this.register).subscribe({
@@ -79,8 +82,31 @@ export class CreateUserPage implements OnInit {
   }
   createForm() {
     this.createUserForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(10),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(10),
+        ],
+      ],
     });
   }
+  get getUserName() {
+    return this.createUserForm.controls['username'];
+  }
+  get getPassword() {
+    return this.createUserForm.controls['password'];
+  }
+
+  //username = this.createUserForm.controls['username']?.value;
+  //password = this.createUserForm.controls['password']?.value;
 }

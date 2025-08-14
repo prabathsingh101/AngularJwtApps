@@ -1,15 +1,11 @@
 <mat-toolbar color="primary">
   <span class="logo">My Dashboard</span>
   <span class="spacer"></span>
-  @if (isLoggedIn()) {
-  <button mat-button routerLink="/dashboard">Dashboard</button>
-  }
-  @if (!isLoggedIn()) {
+  @if (isLoggedIn()) {<button mat-button routerLink="/dashboard">Dashboard</button>}
+  @if (!isLoggedIn()) {<button mat-button routerLink="/register">Register</button>}
+  <!-- @if (isLoggedIn()) {
   <button mat-button routerLink="/register">Register</button>
-  }
-   @if (isLoggedIn()) {
-  <button mat-button routerLink="/register">Register</button>
-  }
+  } -->
   @if(!isLoggedIn()){<button mat-button routerLink="/login">Login</button>}
   @if(isLoggedIn()){<button mat-button (click)="logout()">Logout</button>}
 </mat-toolbar>
