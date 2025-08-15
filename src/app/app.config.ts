@@ -10,14 +10,12 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptor } from './Auth/jwt.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    //provideAnimations(),
-    provideHttpClient(
-      withInterceptors([jwtInterceptor])
-    ),
+    provideHttpClient(withInterceptors([jwtInterceptor])),
   ],
 };

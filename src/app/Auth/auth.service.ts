@@ -42,6 +42,8 @@ export class AuthService {
   }
 
   logout(): void {
+    const refreshToken = localStorage.getItem('refreshToken')!;
+    this.http.post(`${this.apiUrl}/logout`, { refreshToken }).subscribe();
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     this.isLoggedInSubject.next(false);

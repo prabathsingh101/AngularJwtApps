@@ -1,36 +1,36 @@
-<div class="user-container">
+<div class="login-container">
   <h2>Create User</h2>
   <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
-    <div class="row">
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>User Name</mat-label>
-          <input matInput #username formControlName="username" required />
-          <mat-error>
-            @if(getUserName.hasError('required')) { Username is required }
-            @if(getUserName.hasError('minlength')) {Username minimum 3 characters}
-            @if(getUserName.hasError('maxlength')) {Username maximum 10 characters}
-          </mat-error>
 
-          <mat-hint align="end">{{username.value.length}} / 10</mat-hint>
-        </mat-form-field>
-      </div>
 
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput #password formControlName="password" required />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>User Name</mat-label>
+      <input matInput #username formControlName="username" required />
+      <mat-error>
+        @if(getUserName.hasError('required')) { Username is required }
+        @if(getUserName.hasError('minlength')) {Username minimum 3 characters}
+        @if(getUserName.hasError('maxlength')) {Username maximum 10 characters}
+      </mat-error>
 
-          <mat-error>
-            @if(getPassword.hasError('required')) { Password is required }
-            @if(getPassword.hasError('minlength')) {Minimum 3 characters long}
-            @if(getPassword.hasError('maxlength')) {Maximum 10 characters long}
-          </mat-error>
+      <mat-hint align="end">{{username.value.length}} / 10</mat-hint>
+    </mat-form-field>
 
-          <mat-hint align="end">{{password.value.length}} / 10</mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput #password formControlName="password" required />
+
+      <mat-error>
+        @if(getPassword.hasError('required')) { Password is required }
+        @if(getPassword.hasError('minlength')) {Minimum 3 characters long}
+        @if(getPassword.hasError('maxlength')) {Maximum 10 characters long}
+      </mat-error>
+
+      <mat-hint align="end">{{password.value.length}} / 10</mat-hint>
+    </mat-form-field>
+
+
     <button mat-flat-button class="cyan">Create User</button>&nbsp;
     <button mat-flat-button class="spring-green">View User</button>
   </form>

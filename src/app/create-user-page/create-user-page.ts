@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user-page',
@@ -37,6 +38,7 @@ export class CreateUserPage implements OnInit {
 
   private fb = inject(FormBuilder);
   private svc = inject(UserService);
+  private router = inject(Router);
 
   private snackBar = inject(MatSnackBar);
 
@@ -65,6 +67,7 @@ export class CreateUserPage implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        this.router.navigate(['/login']);
         this.createUserForm.reset();
       },
       error: (error: any) => {
