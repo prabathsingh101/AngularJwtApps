@@ -67,6 +67,10 @@ export class CreateUserPage implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        sessionStorage.setItem(
+          'tempUser',
+          JSON.stringify(this.createUserForm.value)
+        );
         this.router.navigate(['/login']);
         this.createUserForm.reset();
       },

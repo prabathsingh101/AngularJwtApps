@@ -41,6 +41,15 @@ export class LoginPage implements OnInit {
       username: ['', [Validators.required]],
       password: ['', Validators.required],
     });
+    // check if we came from registration
+    const tempUser = sessionStorage.getItem('tempUser');
+    if (tempUser) {
+      const { username, password } = JSON.parse(tempUser);
+      this.loginForm.patchValue({ username, password });
+
+      // clear after use
+      sessionStorage.removeItem('tempUser');
+    }
   }
 
   login() {
