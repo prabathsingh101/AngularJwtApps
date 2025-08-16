@@ -59,19 +59,25 @@ export class LoginPage implements OnInit {
         .subscribe({
           next: (res: any) => {
             this.router.navigate(['/dashboard']);
-            this.snackBar.open('Logged in.', 'Close', {
+            this.snackBar.open('Loggedin', 'Close', {
               duration: 3000, // 3 seconds
+              panelClass: ['snackbar-success'],
               horizontalPosition: 'right',
               verticalPosition: 'top',
             });
           },
           error: (error: any) => {
-            console.error('Error creating user:', error);
-            this.snackBar.open('❌ Failed to save data', error.message, {
-              duration: 3000,
-              horizontalPosition: 'right',
-              verticalPosition: 'top',
-            });
+            console.error(error.message, error);
+            let msg = 'Something went wrong';
+            if (error.status === 401) {
+              msg = error.error?.message;
+              this.snackBar.open(`❌ ${msg}`, 'Close', {
+                duration: 3000,
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+              });
+            }
           },
         });
     }

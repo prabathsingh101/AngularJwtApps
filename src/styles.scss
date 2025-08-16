@@ -99,4 +99,15 @@ html {
 html, body,.mat-sidenav-container { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.snackbar-error {
+  background-color: #f44336 !important; /* Red */
+  color: white !important;
+  font-weight: 500;
+}
+
+.snackbar-success {
+  background-color: green;
+  color: white;
+}
+
 
