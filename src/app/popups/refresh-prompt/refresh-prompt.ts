@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../Auth/auth.service';
 
 @Component({
@@ -13,7 +13,13 @@ import { AuthService } from '../../Auth/auth.service';
 export class RefreshPrompt {
   logout = inject(AuthService);
 
+  private dialogRef = inject(MatDialogRef<RefreshPrompt>);
+
+  onYes() {
+    this.dialogRef.close(true);
+  }
+
   onNo() {
-    this.logout.logout();
+    this.dialogRef.close(false);
   }
 }
